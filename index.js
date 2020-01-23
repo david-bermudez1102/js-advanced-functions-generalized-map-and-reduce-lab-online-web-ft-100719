@@ -8,18 +8,16 @@ const map = (sourceArray, func) => {
 };
 
 const reduce = (sourceArray, func, startingPoint = 0) => {
-  let memo;
+  let memo, s;
   if (startingPoint) {
     memo = startingPoint;
-    for (let i=0; i<sourceArray.length; i++) {
-      memo = func(memo, sourceArray[i]);
-    }
+    s = 0;
   } else {
     memo = sourceArray[0];
-    for (let i = 1; i < sourceArray.length; i++) {
-      memo = func(memo, sourceArray[i]);
-    }
+    s = 1;
   }
-
+  for (let i = s; i < sourceArray.length; i++) {
+    memo = func(memo, sourceArray[i]);
+  }
   return memo;
 };
